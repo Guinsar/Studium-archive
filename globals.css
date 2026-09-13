@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
+:root {
+  --couleur-ink: 28 43 58;
+  --couleur-parchment: 243 238 227;
+  --couleur-wine: 122 42 42;
+  --couleur-charcoal: 43 38 32;
+  --couleur-sage: 124 139 118;
+  --couleur-gold: 185 138 61;
+  --couleur-rule: 216 207 188;
+  --couleur-surface: 255 255 255;
+}
+
+.dark {
+  --couleur-ink: 240 236 227;
+  --couleur-parchment: 17 22 28;
+  --couleur-wine: 214 122 122;
+  --couleur-charcoal: 220 214 200;
+  --couleur-sage: 158 176 148;
+  --couleur-gold: 214 168 96;
+  --couleur-rule: 52 60 72;
+  --couleur-surface: 30 37 46;
+}
+
+html {
+  background-color: rgb(var(--couleur-parchment));
+  background-image:
+    radial-gradient(circle at 20% 20%, rgb(var(--couleur-wine) / 0.06), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgb(var(--couleur-gold) / 0.08), transparent 40%),
+    radial-gradient(circle at 75% 85%, rgb(var(--couleur-sage) / 0.06), transparent 45%);
+  background-attachment: fixed;
+  transition: background-color 0.3s ease;
+}
+
+body {
+  color: rgb(var(--couleur-charcoal));
+}
+
+::selection {
+  background-color: rgb(var(--couleur-wine));
+  color: rgb(var(--couleur-parchment));
+}
+
+@layer components {
+  .champ {
+    @apply rounded-sm border border-rule bg-surface/60 px-4 py-2 transition-colors duration-200 focus:border-wine focus:outline-none;
+  }
+  .bouton-principal {
+    @apply inline-flex items-center gap-2 rounded-sm bg-gradient-to-r from-ink to-ink px-6 py-2 text-sm text-parchment transition-all duration-300 hover:from-wine hover:to-gold hover:shadow-lg;
+  }
+  .bouton-discret {
+    @apply inline-flex items-center gap-2 rounded-sm border border-rule px-5 py-2 text-sm text-charcoal transition-all duration-200 hover:border-wine hover:text-wine;
+  }
+}
